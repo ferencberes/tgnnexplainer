@@ -3,8 +3,11 @@ from matplotlib import use
 import numpy as np
 import pandas as pd
 import argparse
-
-from path import Path
+import sys
+import os
+from pathlib import Path
+p=str(Path(os.path.abspath(__file__)).parents[5])
+sys.path.append(p)
 
 
 
@@ -37,7 +40,7 @@ def reindex(df):
     return df
 
 def run(data_name, out_dir=None):
-    from tgnnexplainer import ROOT_DIR
+    from tgnnexplainer.__init__ import ROOT_DIR
     from tgnnexplainer.xgraph.dataset.tg_dataset import verify_dataframe_unify, check_wiki_reddit_dataformat
 
     data_dir = ROOT_DIR/'xgraph'/'dataset'/'data'

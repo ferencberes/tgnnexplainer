@@ -4,7 +4,11 @@ import hydra
 from omegaconf import DictConfig, OmegaConf
 import multiprocessing as mp
 from multiprocessing import Process
-
+import sys
+import os
+from pathlib import Path
+p=str(Path(os.path.abspath(__file__)).parents[2])
+sys.path.append(p)
 from tgnnexplainer.xgraph.dataset.tg_dataset import load_tg_dataset, load_explain_idx
 from tgnnexplainer.xgraph.dataset.utils_dataset import construct_tgat_neighbor_finder
 

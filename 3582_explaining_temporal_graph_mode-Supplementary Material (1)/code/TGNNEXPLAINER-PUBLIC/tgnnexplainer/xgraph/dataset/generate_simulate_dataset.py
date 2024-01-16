@@ -3,8 +3,12 @@ import numpy as np
 from tick.hawkes import SimuHawkesExpKernels
 from itertools import product
 import pandas as pd
-
-from tgnnexplainer import ROOT_DIR
+import sys
+import os
+from pathlib import Path
+p=str(Path(os.path.abspath(__file__)).parents[3])
+sys.path.append(p)
+from tgnnexplainer.__init__ import ROOT_DIR
 from tgnnexplainer.xgraph.dataset.tg_dataset import verify_dataframe_unify
 
 

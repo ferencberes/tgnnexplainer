@@ -5,7 +5,11 @@ import torch
 
 import torch.nn as nn
 import torch.nn.functional as F
-
+import sys
+import os
+from pathlib import Path
+p=str(Path(os.path.abspath(__file__)).parents[5])
+sys.path.append(p)
 from tgnnexplainer.xgraph.models.ext.tgat.graph import NeighborFinder
 
 class MergeLayer(torch.nn.Module):

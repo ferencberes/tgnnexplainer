@@ -3,8 +3,12 @@ import pandas as pd
 import argparse
 
 from torch import positive
-
-from tgnnexplainer import ROOT_DIR
+import sys
+import os
+from pathlib import Path
+p=str(Path(os.path.abspath(__file__)).parents[3])
+sys.path.append(p)
+from tgnnexplainer.__init__ import ROOT_DIR
 
 def check_wiki_reddit_dataformat(df):
     assert df.iloc[:, 0].min() == 0
