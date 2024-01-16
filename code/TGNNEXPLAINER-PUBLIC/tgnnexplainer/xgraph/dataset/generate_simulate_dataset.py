@@ -3,11 +3,24 @@ import numpy as np
 from tick.hawkes import SimuHawkesExpKernels
 from itertools import product
 import pandas as pd
-import sys
-import os
 from pathlib import Path
-p=str(Path(os.path.abspath(__file__)).parents[3])
+import os
+import sys
+
+def remove_first_two_directories(path):
+    path_parts = path.split(os.sep)[3:]  # Split the path and discard the first 3 parts
+    new_path = os.sep.join(path_parts)  # Rejoin the remaining parts
+    return new_path
+
+# Get the current working directory
+full_dir = os.getcwd()
+modified_dir = remove_first_two_directories(full_dir)
+pruned_dir=Path(modified_dir).parents[2]
+p=str("/home/"+str(pruned_dir))
+print(p)
 sys.path.append(p)
+
+
 from tgnnexplainer.__init__ import ROOT_DIR
 from tgnnexplainer.xgraph.dataset.tg_dataset import verify_dataframe_unify
 
