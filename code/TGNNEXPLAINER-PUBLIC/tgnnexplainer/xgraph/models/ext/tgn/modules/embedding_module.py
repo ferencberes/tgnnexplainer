@@ -3,7 +3,11 @@ import torch
 from torch import nn
 import numpy as np
 import math
-
+import sys
+import os
+from pathlib import Path
+p=str(Path(os.path.abspath(__file__)).parents[6])
+sys.path.append(p)
 
 from tgnnexplainer.xgraph.models.ext.tgn.model.temporal_attention import TemporalAttentionLayer
 # from model.temporal_attention import TemporalAttentionLayer

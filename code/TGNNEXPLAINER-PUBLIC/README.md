@@ -7,6 +7,7 @@ Download from http://snap.stanford.edu/jodie/wikipedia.csv and http://snap.stanf
 cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/models/ext/tgat
 python process.py -d wikipedia
 python process.py -d reddit
+python process.py -d mooc  # This one has been added. also need to run it at all the other points
 
 ```
 

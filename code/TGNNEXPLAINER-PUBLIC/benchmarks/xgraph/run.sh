@@ -1,3 +1,6 @@
+source /sw/arch/RHEL8/EB_production/2023/software/Anaconda3/2023.07-2/etc/profile.d/conda.sh
+conda activate condafact
+
 # run all explainers
 dataset=wikipedia # wikipedia, reddit, simulate_v1, simulate_v2
 model=tgat # tgat, tgn

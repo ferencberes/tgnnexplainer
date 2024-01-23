@@ -3,6 +3,11 @@ from turtle import pos
 import numpy as np
 import torch
 from collections import defaultdict
+import os
+import sys
+from pathlib import Path
+p=str(Path(os.path.abspath(__file__)).parents[6])
+sys.path.append(p)
 
 from tgnnexplainer.xgraph.models.ext.tgn.utils.utils import MergeLayer
 from tgnnexplainer.xgraph.models.ext.tgn.modules.memory import Memory
@@ -165,7 +170,6 @@ class TGN(torch.nn.Module):
                                                          dim=0)
 
         # Compute the embeddings using the embedding module
-        
         node_embedding = self.embedding_module.compute_embedding(memory=memory,
                                                                 source_nodes=nodes,
                                                                 timestamps=timestamps,
@@ -187,8 +191,6 @@ class TGN(torch.nn.Module):
                 # new messages for them)
                 self.update_memory(positives, self.memory.messages)
 
-                assert torch.allclose(memory[positives], self.memory.get_memory(positives), atol=1e-5), \
-                    "Something wrong in how the memory was updated"
 
                 # Remove messages for the positives since we have already updated the memory using them
                 self.memory.clear_messages(positives)

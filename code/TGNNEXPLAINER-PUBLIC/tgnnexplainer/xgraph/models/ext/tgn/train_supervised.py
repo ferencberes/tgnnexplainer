@@ -8,6 +8,8 @@ import pickle
 from pathlib import Path
 
 import torch
+print("HEREEEEEE")
+print(torch.__version__)
 import numpy as np
 
 from model.tgn import TGN
@@ -123,7 +125,7 @@ max_idx = max(full_data.unique_nodes)
 train_ngh_finder = get_neighbor_finder(train_data, uniform=UNIFORM, max_node_idx=max_idx)
 
 # Set device
-device_string = 'cuda:{}'.format(GPU) if torch.cuda.is_available() else 'cpu'
+device_string = 'cuda' if torch.cuda.is_available() else 'cpu'
 device = torch.device(device_string)
 
 # Compute time statistics

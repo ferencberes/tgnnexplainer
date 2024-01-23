@@ -85,7 +85,7 @@ def run(data_name, out_dir=None):
     elif data_name == 'simulate_v1':
         raise NotImplementedError
 
-    elif data_name == 'wikipedia' or data_name == 'reddit':
+    elif data_name == 'wikipedia' or data_name == 'reddit' elif data_name == 'mooc': # added mooc dataset
         select_columns = [c for c in new_df.columns if 'f' in c] # features
         edge_feat = np.zeros((len(df) + 1, len(select_columns))) # 0-th pad with 0
         edge_feat[1:, :] = new_df[select_columns].to_numpy()

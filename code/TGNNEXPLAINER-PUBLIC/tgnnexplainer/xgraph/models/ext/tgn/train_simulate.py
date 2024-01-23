@@ -129,7 +129,7 @@ train_rand_sampler = RandEdgeSampler(train_data.sources, train_data.destinations
                                                                             #  seed=3)
 
 # Set device
-device_string = 'cuda:{}'.format(GPU) if torch.cuda.is_available() else 'cpu'
+device_string = 'cuda' if torch.cuda.is_available() else 'cpu'
 device = torch.device(device_string)
 
 # Compute time statistics

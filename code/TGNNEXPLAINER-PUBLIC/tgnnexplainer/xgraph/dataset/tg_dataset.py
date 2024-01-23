@@ -15,10 +15,9 @@ def remove_first_two_directories(path):
 # Get the current working directory
 full_dir = os.getcwd()
 modified_dir = remove_first_two_directories(full_dir)
-pruned_dir=Path(modified_dir).parents[4]
+pruned_dir=Path(modified_dir).parents[2]
 p=str("/home/"+str(pruned_dir))
 sys.path.append(p)
-
 from tgnnexplainer.__init__ import ROOT_DIR
 
 def check_wiki_reddit_dataformat(df):

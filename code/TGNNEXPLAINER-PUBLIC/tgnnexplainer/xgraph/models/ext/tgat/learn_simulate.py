@@ -269,10 +269,7 @@ full_ngh_finder = NeighborFinder(full_adj_list, uniform=False) # must be False t
 
 
 ### Model initialize
-if torch.cuda.is_available():
-    device = torch.device('cuda:{}'.format(GPU))
-else:
-    device = torch.device('cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 tgan = TGAN(full_ngh_finder, n_feat, e_feat,
             device=device,
             num_layers=NUM_LAYER, use_time=USE_TIME, agg_method=AGG_METHOD, attn_mode=ATTN_MODE,

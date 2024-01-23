@@ -4,6 +4,7 @@ import time
 import sys
 import argparse
 import torch
+print(torch.__version__)
 import numpy as np
 import pickle
 from pathlib import Path
