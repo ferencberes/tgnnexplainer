@@ -3,7 +3,7 @@
 This repo is ment to ease the reproduction of results of [TGNNExplainer](https://openreview.net/forum?id=BR_ZhvcYbGJ). 
 In addition this repository adds two more open-source datasets for training on the proposed methodology.
 
-
+code_hilr and code_lolr are directories for learning rate exprimentation. For now
 
 # Download wikipedia and reddit datasets
 Download from http://snap.stanford.edu/jodie/wikipedia.csv and http://snap.stanford.edu/jodie/reddit.csv and http://snap.stanford.edu/jodie/mooc.csv
