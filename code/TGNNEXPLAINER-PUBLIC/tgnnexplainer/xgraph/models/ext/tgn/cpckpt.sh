@@ -1,6 +1,6 @@
 model=tgn
-dataset=simulate_v2 # wikipedia, reddit, simulate_v1, simulate_v2
-epoch=5
+dataset=reddit_hyperlinks # wikipedia, reddit, simulate_v1, simulate_v2
+epoch=9
 
 
 source_path=./saved_checkpoints/tgn-attn-${dataset}-${epoch}.pth

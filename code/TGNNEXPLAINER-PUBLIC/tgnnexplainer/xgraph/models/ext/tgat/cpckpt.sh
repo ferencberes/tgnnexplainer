@@ -1,5 +1,5 @@
 model=tgat
-dataset=reddit
+dataset=reddit_hyperlinks
 epoch=9
 
 source_path=./saved_checkpoints/${dataset}-attn-prod-${epoch}.pth

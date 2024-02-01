@@ -45,6 +45,26 @@ param:
       - 0.1
     batch_size: 16
     lr: 1e-4
+  mooc:
+    explanation_level: 'event'
+    verbose: True
+    train_epochs: 70 # 20, 30,
+    reg_coefs:
+      - 0.5
+      - 0.1
+    batch_size: 16
+    lr: 1e-4
+  reddit_hyperlinks:
+    explanation_level: 'event'
+    verbose: True
+    train_epochs: 50 # 20, 30,
+    reg_coefs:
+      - 0.5
+      - 0.1
+    batch_size: 16
+    lr: 1e-4
+
+
   
   
 

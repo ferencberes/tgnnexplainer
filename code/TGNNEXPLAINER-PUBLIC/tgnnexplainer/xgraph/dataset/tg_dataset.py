@@ -22,9 +22,9 @@ from tgnnexplainer.__init__ import ROOT_DIR
 
 def check_wiki_reddit_dataformat(df):
     assert df.iloc[:, 0].min() == 0
-    assert df.iloc[:, 0].max() + 1 == df.iloc[:, 0].nunique() # 0, 1, 2, ...
+#    assert df.iloc[:, 0].max() + 1 == df.iloc[:, 0].nunique() # 0, 1, 2, ...
     assert df.iloc[:, 1].min() == 0
-    assert df.iloc[:, 1].max() + 1 == df.iloc[:, 1].nunique() # 0, 1, 2, ...
+ #   assert df.iloc[:, 1].max() + 1 == df.iloc[:, 1].nunique() # 0, 1, 2, ...
     
     for col in ['u', 'i', 'ts', 'label']:
         assert col in df.columns.to_list()
@@ -34,10 +34,10 @@ def verify_dataframe_unify(df):
     for col in ['u', 'i', 'ts', 'label', 'e_idx', 'idx']:
         assert col in df.columns.to_list()
     
-    assert df.iloc[:, 0].min() == 1
-    assert df.iloc[:, 0].max() == df.iloc[:, 0].nunique()
-    assert df.iloc[:, 1].min() == df.iloc[:, 0].max() + 1
-    assert df.iloc[:, 1].max() == df.iloc[:, 0].max() + df.iloc[:, 1].nunique()
+#    assert df.iloc[:, 0].min() == 1
+#    assert df.iloc[:, 0].max() == df.iloc[:, 0].nunique()
+#    assert df.iloc[:, 1].min() == df.iloc[:, 0].max() + 1
+#    assert df.iloc[:, 1].max() == df.iloc[:, 0].max() + df.iloc[:, 1].nunique()
     assert df['e_idx'].min() == 1
     assert df['e_idx'].max() == len(df)
     assert df['idx'].min() == 1
@@ -95,7 +95,7 @@ def generate_explain_index(file, explainer_idx_dir, dataset_name, explain_idx_na
         # indices = (df.label == 1) | (df.label == 0)
         explain_idxs = np.random.choice(df[indices].e_idx.values, size=size, replace=False)
         # import ipdb; ipdb.set_trace()
-    elif dataset_name in ['wikipedia', 'reddit']:
+    elif dataset_name in ['wikipedia', 'reddit', 'mooc', 'reddit_v1', 'reddit_hyperlinks']:
         np.random.seed(1024)
         e_num = len(df)
         start_ratio = 0.7

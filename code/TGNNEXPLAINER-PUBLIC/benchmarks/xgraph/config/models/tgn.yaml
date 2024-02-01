@@ -31,3 +31,17 @@ param:
     num_neighbors: 10
     message_dimension: 100
     memory_dimension: 4
+  reddit_hyperlinks:
+    num_layers: 2
+    num_heads: 2
+    dropout: 0.0
+    num_neighbors: 10
+    message_dimension: 100
+    memory_dimension: 88
+  mooc:
+    num_layers: 2
+    num_heads: 2
+    dropout: 0.0
+    num_neighbors: 10
+    message_dimension: 100
+    memory_dimension: 4

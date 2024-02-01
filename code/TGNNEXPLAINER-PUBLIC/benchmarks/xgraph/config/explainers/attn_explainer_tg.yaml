@@ -21,5 +21,9 @@ param:
   simulate_v2:
     explanation_level: 'event'
     verbose: True
-
-  
+  mooc:
+    explanation_level: 'event'
+    verbose: True
+  reddit_hyperlinks:
+    explanation_level: 'event'
+    verbose: True

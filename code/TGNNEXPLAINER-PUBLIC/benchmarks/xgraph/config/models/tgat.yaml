@@ -39,3 +39,22 @@ param:
     num_heads: 2
     dropout: 0.0
     uniform_sample_ngh: False
+  mooc:
+    num_layers: 2
+    use_time: 'time'
+    agg_method: 'attn'
+    attn_mode: 'prod'
+    num_neighbors: 10
+    num_heads: 2
+    dropout: 0.0
+    uniform_sample_ngh: False
+  reddit_hyperlinks:
+    num_layers: 2
+    use_time: 'time'
+    agg_method: 'attn'
+    attn_mode: 'prod'
+    num_neighbors: 10
+    num_heads: 2
+    dropout: 0.0
+    uniform_sample_ngh: False
+

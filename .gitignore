@@ -1,0 +1,12 @@
+results/*
+outputs/*
+data/*
+__pycache__/*
+explainer_ckcpts/*
+checkpoints/*
+log/*
+processed/*
+saved_models/*
+saved_checkpoints/*
+saved_mcts_results/*
+*.log

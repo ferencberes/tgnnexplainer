@@ -175,7 +175,7 @@ class PGExplainerExt(BaseExplainerTG):
     def _obtain_train_idxs(self,):
         size = 1000
         # np.random.seed( np.random.randint(10000) )
-        if self.dataset_name in ['wikipedia', 'reddit']:
+        if self.dataset_name in ['wikipedia', 'reddit', 'mooc', 'reddit_hyperlinks']:
             train_e_idxs = np.random.randint(int(len(self.all_events)*0.2), int(len(self.all_events)*0.6), (size, ))
             train_e_idxs = shuffle(train_e_idxs) # TODO: not shuffle?
         elif self.dataset_name in ['simulate_v1', 'simulate_v2']:
