@@ -1,28 +1,37 @@
 # Download wikipedia and reddit datasets
 Download from http://snap.stanford.edu/jodie/wikipedia.csv and http://snap.stanford.edu/jodie/reddit.csv and put them into ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/dataset/data
 
+# setting up training evironment
+```
+conda env create -f conda_fact.yml
+```
+This environment is incompatible with Tick.
 
 # Preprocess real-world datasets
 ```
 cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/models/ext/tgat
 python process.py -d wikipedia
 python process.py -d reddit
+python process.py -d mooc
+python process py -d reddit_hyperlinks
 
 ```
 
 # Generate simulate dataset
 ```
 cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/dataset
-python generate_simulate_dataset.py -d simulate_v1(simulate_v2)
+python generate_simulate_dataset.py -d simulate_v1
+python generate_simulate_dataset.py -d simulate_v2
 ```
-
+This step generates the simulate datasets with Tick. note that the Tick module is depricated for Py>3.7.
 
 
 # Generate explain indexs
 ```
 cd  ~/workspace/GNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/dataset
-python tg_dataset.py -d wikipedia(reddit, simulate_v1, simulate_v2) -c index
+python tg_dataset.py -d reddit -c index
 ```
+This step creates a test set for the explainers. it randomly selects 500 indexes from the full test set.
 
 # Train tgat/tgn model
 tgat:
@@ -31,6 +40,7 @@ cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/models/ext/tgat
 ./train.sh
 ./cpckpt.sh
 ```
+
 
 tgn:
 ```
