@@ -1,5 +1,10 @@
 # Download wikipedia and reddit datasets
-Download from http://snap.stanford.edu/jodie/wikipedia.csv and http://snap.stanford.edu/jodie/reddit.csv and put them into ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/dataset/data
+Download from http://snap.stanford.edu/jodie/wikipedia.csv and http://snap.stanford.edu/jodie/reddit.csv
+http://snap.stanford.edu/jodie/mooc.csv
+https://snap.stanford.edu/data/soc-redditHyperlinks-body.tsv
+and put them into ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/dataset/data
+
+The reddit_hyperlinks dataset should be converted to .csv format.
 
 # setting up training evironment
 ```
@@ -16,7 +21,6 @@ python process.py -d mooc
 python process py -d reddit_hyperlinks
 
 ```
-
 # Generate simulate dataset
 ```
 cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/dataset
@@ -41,7 +45,6 @@ cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/models/ext/tgat
 ./cpckpt.sh
 ```
 
-
 tgn:
 ```
 cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/models/ext/tgn
@@ -49,9 +52,17 @@ cd  ~/workspace/TGNNEXPLAINER-PUBLIC/tgnnexplainer/xgraph/models/ext/tgn
 ./cpckpt.sh
 ```
 
+The cpckpt.sh ensures that the saved TGAT
+model is findable during the explainer training. make sure cpckpt.sh is ran for for each model dataset combination
+
 # Run our explainer and other  baselines
 ```
 cd  ~/workspace/TGNNEXPLAINER-PUBLIC/benchmarks
 ./run.sh
 ``` 
+In the benchmars directory a shell script exists for training all 4 explainers on a (dataset,model) combination. 
 
+
+
+dataset= reddit, Wikipedia, simulate_v1, simulate_v2, mooc, reddit_hyperlinks.
+model= TGAT,TGN
