@@ -5,4 +5,4 @@ defaults:
   - explainers: subgraphx_tg # ours tgnnexplainer
 device_id: 0
 evaluate: True
-seed: 1
+seed: 123 #1

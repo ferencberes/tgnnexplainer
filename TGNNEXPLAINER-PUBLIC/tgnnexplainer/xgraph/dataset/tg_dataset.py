@@ -127,6 +127,8 @@ if __name__ == '__main__':
 
     data_dir = ROOT_DIR/'xgraph'/'models'/'ext'/'tgat'/'processed'
     explainer_idx_dir = ROOT_DIR/'xgraph'/'dataset'/'explain_index'
+    if not os.path.exists(explainer_idx_dir):
+        os.makedirs(explainer_idx_dir)
     file = data_dir/f'ml_{args.d}.csv'
 
     if args.c == 'format':
