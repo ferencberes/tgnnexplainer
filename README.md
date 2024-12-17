@@ -1,4 +1,4 @@
-This repo is cloned from the repo [chaosido/FACT-course](https://github.com/chaosido/FACT-course/tree/dev). To see the changelog used for this project, see the original repo.
+This repo is cloned from the repo [cisaic/tgnnexplainer](https://github.com/cisaic/tgnnexplainer/tree/dev).
 
 # :sparkles: TGNExplainer reproduction :sparkles:
 
