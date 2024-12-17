@@ -5,6 +5,7 @@ import time
 import random
 import sys
 import argparse
+import os
 
 import torch
 import pandas as pd
@@ -53,7 +54,9 @@ parser.add_argument('--agg_method', type=str, choices=['attn', 'lstm', 'mean'], 
 parser.add_argument('--attn_mode', type=str, choices=['prod', 'map'], default='prod', help='use dot product attention or mapping based')
 parser.add_argument('--time', type=str, choices=['time', 'pos', 'empty'], help='how to use time information', default='time')
 parser.add_argument('--uniform', action='store_true', help='take uniform sampling from temporal neighbors')
-
+parser.add_argument('--log_dir', type=str, default='./log', help='log directory')
+parser.add_argument('--model_dir', type=str, default='./saved_models', help='model directory')
+parser.add_argument('--checkpoint_dir', type=str, default='./saved_checkpoints', help='checkpoint directory')
 parser.add_argument('--seed', type=int, default=123, help='seed for randomization (python random and np.random)')
 
 try:
@@ -80,23 +83,29 @@ NUM_LAYER = args.n_layer
 LEARNING_RATE = args.lr
 NODE_DIM = args.node_dim
 TIME_DIM = args.time_dim
-
 SEED = args.seed
 
 random.seed(SEED)
 np.random.seed(SEED)
 torch.manual_seed(SEED)
 
-# import ipdb; ipdb.set_trace()
+LOG_DIR = args.log_dir
+MODEL_DIR = args.model_dir
+CHECKPOINT_DIR = args.checkpoint_dir
+for dir in [LOG_DIR, MODEL_DIR, CHECKPOINT_DIR]:
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+        print('Directory was created: "{}"'.format(dir))
 
-MODEL_SAVE_PATH = f'./saved_models/tgat_{args.data}_{args.seed}_best.pth'
-get_checkpoint_path = lambda epoch: f'./saved_checkpoints/{args.data}-{args.agg_method}-{args.attn_mode}-{args.seed}-{epoch}.pth'
+# import ipdb; ipdb.set_trace()
+MODEL_SAVE_PATH = f'{MODEL_DIR}/tgat_{args.data}_{args.seed}_best.pth'
+get_checkpoint_path = lambda epoch: f'{CHECKPOINT_DIR}/{args.data}-{args.agg_method}-{args.attn_mode}-{args.seed}-{epoch}.pth'
 
 ### set up logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
-fh = logging.FileHandler('log/{}.log'.format(str(time.time())))
+fh = logging.FileHandler('{}/{}.log'.format(LOG_DIR, str(time.time())))
 fh.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.WARN)
@@ -351,9 +360,3 @@ logger.info('Test statistics: Old nodes -- acc: {}, auc: {}, ap: {}'.format(test
 logger.info('Saving TGAN model')
 torch.save(tgan.state_dict(), MODEL_SAVE_PATH)
 logger.info('TGAN models saved')
-
- 
-
-
-
-

@@ -5,6 +5,7 @@ import time
 import sys
 import random
 import argparse
+import os
 
 from tqdm import tqdm
 import torch
@@ -60,6 +61,9 @@ parser.add_argument('--time', type=str, choices=['time', 'pos', 'empty'], help='
 parser.add_argument('--new_node', action='store_true', help='model new node')
 parser.add_argument('--uniform', action='store_true', help='take uniform sampling from temporal neighbors')
 
+parser.add_argument('--log_dir', type=str, default='./log', help='log directory')
+parser.add_argument('--model_dir', type=str, default='./saved_models', help='model directory')
+
 try:
     args = parser.parse_args()
 except:
@@ -86,11 +90,22 @@ NODE_LAYER = 1
 NODE_DIM = args.node_dim
 TIME_DIM = args.time_dim
 
+LOG_DIR = args.log_dir
+MODEL_DIR = args.model_dir
+for dir in [LOG_DIR, MODEL_DIR]:
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+        print('Directory was created: "{}"'.format(dir))
+
 ### set up logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
-fh = logging.FileHandler('log/{}.log'.format(str(time.time())))
+log_dir = 'log'
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+    print('Directory for log files was created: "{}"'.format(log_dir))
+fh = logging.FileHandler('{}/{}.log'.format(log_dir, str(time.time())))
 fh.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.WARN)
@@ -188,7 +203,7 @@ idx_list = np.arange(num_instance)
 np.random.shuffle(idx_list) 
 
 logger.info('loading saved TGAN model')
-model_path = f'./saved_models/{args.prefix}-{args.agg_method}-{args.attn_mode}-{DATA}.pth' # TODO SEED
+model_path = f'{MODEL_DIR}/{args.prefix}-{args.agg_method}-{args.attn_mode}-{DATA}.pth' # TODO SEED
 tgan.load_state_dict(torch.load(model_path))
 tgan.eval()
 logger.info('TGAN models loaded')

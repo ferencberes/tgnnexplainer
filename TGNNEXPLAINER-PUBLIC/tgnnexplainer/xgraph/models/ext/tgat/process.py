@@ -59,6 +59,9 @@ def run(data_name, out_dir=None):
         out_dir = Path('./processed/')
     else:
         out_dir = Path(out_dir)
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
+        print(f'Output directory ("{out_dir}") for processed data files was created')
 
     OUT_DF = out_dir/'ml_{}.csv'.format(data_name)
     OUT_EDGE_FEAT = out_dir/'ml_{}.npy'.format(data_name)
