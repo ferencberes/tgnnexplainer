@@ -106,6 +106,8 @@ def pipeline(config: DictConfig):
     config.explainers.results_dir = str(ROOT_DIR.parent / "benchmarks" / "results")
     config.explainers.mcts_saved_dir = str(ROOT_DIR / "xgraph" / "saved_mcts_results")
     config.explainers.explainer_ckpt_dir = str(ROOT_DIR / "xgraph" / "explainer_ckpts")
+    for dir in [config.explainers.results_dir, config.explainers.mcts_saved_dir, config.explainers.explainer_ckpt_dir]:
+        os.makedirs(dir, exist_ok=True)
 
     print(OmegaConf.to_yaml(config))
 
